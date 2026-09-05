@@ -215,6 +215,7 @@
       "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "unsloth-gemma-4-26b-a4b-it-gguf--q8-k-xl",
       "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-m",
+      "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
       "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-xl",
       "unsloth-gemma-4-26b-a4b-it-gguf--ud-q8-k-xl"
     ],
@@ -870,6 +871,7 @@
     "ornith-1-5-35b-a3b-gguf": [
       "ornith-ai-ornith-1-5-35b-a3b-gguf--apex-mtp-i-compact",
       "ornith-ai-ornith-1-5-35b-a3b-gguf--q4-k-m",
+      "ornith-ai-ornith-1-5-35b-a3b-gguf--q5-k-m",
       "ornith-ai-ornith-1-5-35b-a3b-gguf--q6-k"
     ],
     "ornith-1-5-35b-a3b-mtp": [
@@ -1248,12 +1250,14 @@
       "unsloth-qwen3-6-27b-gguf--bf16",
       "unsloth-qwen3-6-27b-gguf--iq3-xxs",
       "unsloth-qwen3-6-27b-gguf--iq4-nl",
+      "unsloth-qwen3-6-27b-gguf--iq4-xs",
       "unsloth-qwen3-6-27b-gguf--q3-k-xl",
       "unsloth-qwen3-6-27b-gguf--q4-0",
       "unsloth-qwen3-6-27b-gguf--q4-k-m",
       "unsloth-qwen3-6-27b-gguf--q4-k-p",
       "unsloth-qwen3-6-27b-gguf--q4-k-s",
       "unsloth-qwen3-6-27b-gguf--q4-k-xl",
+      "unsloth-qwen3-6-27b-gguf--q6-k",
       "unsloth-qwen3-6-27b-gguf--q8-0",
       "unsloth-qwen3-6-27b-gguf--ud-iq2-m",
       "unsloth-qwen3-6-27b-gguf--ud-iq2-xxs",
@@ -1268,6 +1272,7 @@
       "unsloth-qwen3-6-27b-mtp-gguf--q1-0",
       "unsloth-qwen3-6-27b-mtp-gguf--q3-k-m",
       "unsloth-qwen3-6-27b-mtp-gguf--q4-k-m",
+      "unsloth-qwen3-6-27b-mtp-gguf--q4-k-s",
       "unsloth-qwen3-6-27b-mtp-gguf--q4-k-xl",
       "unsloth-qwen3-6-27b-mtp-gguf--q5-k-m",
       "unsloth-qwen3-6-27b-mtp-gguf--q6-k",
@@ -1497,6 +1502,8 @@
       "lmcoleman-qwen3-8-27b-rocmfpx-gguf--fp4",
       "mcsplain-qwen3-8-27b-oq8-mtp--q8-k-xl",
       "orcarouter-qwen3-8-27b-uncensored-gguf--iq2-xxs",
+      "orcarouter-qwen3-8-27b-uncensored-gguf--q6-k",
+      "orcarouter-qwen3-8-27b-uncensored-gguf--q8-0",
       "pearsonkyle-qwen3-8-27b-gptq-w4a16--w4a16",
       "philbert440-qwen3-8-27b-w4a16-awq--w4a16",
       "qwen-qwen3-8-27b--bf16",

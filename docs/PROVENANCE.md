@@ -33,6 +33,10 @@ It was treated as an import candidate, not as final truth. This pass corrected t
 
 The local.ai Postgres source is accessed only by the external ETL workflow. No database URL or credential is stored here. The importer accepts the compact, checksummed publication directory and never opens a database connection itself.
 
+## W7800 48GB lab import (par1-cs13)
+
+Observed llama.cpp HIP evidence from host `par1-cs13` (2× AMD Radeon PRO W7800 48GB, gfx1100, ROCm 7.2, llama.cpp `c060ca9`) was imported on 2026-09-06 as reference-only candidates. Source tree: `LocalMaxxing/registry-data/w7800-local-ai-registry/` (123 speed sweeps: 32 stock HIP, 32 Lemonade b1323, 32 kernel-anvil, 27 llama-server MTP). Dual rows are `hardware_count: 2` tensor-split (`-sm tensor -ts 0.5,0.5`), not a faster 1×. Qwen3.6 MTP weights are `unsloth/Qwen3.6-*-MTP-GGUF`, not the trunk GGUF used for llama-bench. Importer: `scripts/import_w7800_lab.py`. Status stays `candidate`; `launch.kind` is `reference`.
+
 ## LocalMaxxing refresh
 
 The public API was refreshed on 2026-08-26 at 19:33 EDT through its documented paginated endpoints. The local response contained 5,747 leaderboard rows across 98 hardware groups and 615 used Hugging Face model IDs; the model endpoint contained 793 records.

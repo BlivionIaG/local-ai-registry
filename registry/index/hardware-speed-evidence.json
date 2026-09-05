@@ -262,6 +262,14 @@
       "point_count": 101,
       "sweep_count": 101
     },
+    "radeon-pro-w7800-48gb": {
+      "max_observed_context_tokens": 512,
+      "model_count": 24,
+      "peak_decode_tok_s": 154.1202516460598,
+      "peak_prefill_tok_s": 2320.481571,
+      "point_count": 123,
+      "sweep_count": 123
+    },
     "rtx-2000-ada-16gb": {
       "fastest_ttft_ms": 693.4,
       "max_observed_context_tokens": 130560,

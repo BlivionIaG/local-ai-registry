@@ -1,0 +1,70 @@
+{
+  "capabilities": {
+    "chat": null,
+    "reasoning": null,
+    "tools": null,
+    "vision": null
+  },
+  "description": "Observed lab run on par1-cs13 (2× AMD Radeon PRO W7800 48GB, gfx1100, ROCm 7.2). Evidence for compatibility, not an executable launch contract.",
+  "engine": {
+    "graph_mode": null,
+    "name": "llama.cpp",
+    "version": "c060ca9+smithy"
+  },
+  "facts": {},
+  "hardware_count": 2,
+  "hardware_id": "radeon-pro-w7800-48gb",
+  "id": "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2",
+  "launch": {
+    "container": {
+      "captured_at": "2026-09-05T22:57:26Z",
+      "compose_file": null,
+      "digest": null,
+      "image": null,
+      "reason": "reference-only-launch",
+      "runtime": null,
+      "source": [
+        {
+          "captured_at": "2026-09-05T22:57:26Z",
+          "kind": "lab-measurement",
+          "publisher": "par1-cs13",
+          "url": "https://github.com/0xSero/local-ai-registry"
+        }
+      ],
+      "state": "none"
+    },
+    "kind": "reference"
+  },
+  "metadata": {
+    "lab": {
+      "host": "par1-cs13",
+      "notes": "SMITHY_CONFIG from autoforge. -b 8192 -ub 64 -ctk/-ctv q8_0 --poll 0. Server recipe; loses llama-bench prefill.",
+      "raw_path": "raw/tuned-kernel-anvil/qwen38-27b-ud-q4-k-m-tuned-dual-tensor.json",
+      "series": "tuned"
+    }
+  },
+  "model_instance_id": "unsloth-qwen3-8-27b-gguf--ud-q4-k-m",
+  "provenance": {
+    "captured_at": "2026-09-05T22:57:26Z",
+    "sources": [
+      {
+        "captured_at": "2026-09-05T22:57:26Z",
+        "kind": "lab-measurement",
+        "publisher": "par1-cs13",
+        "url": "https://github.com/0xSero/local-ai-registry"
+      }
+    ]
+  },
+  "recipe_source": "0xsero",
+  "schema_version": "local-ai-registry/v1",
+  "serving": {
+    "kv_cache_tokens": null,
+    "max_concurrency": 1,
+    "max_context_tokens": 640,
+    "tensor_parallel": 2
+  },
+  "speed_sweep_ids": [
+    "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2-sweep"
+  ],
+  "status": "candidate"
+}
