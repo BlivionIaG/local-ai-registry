@@ -5,7 +5,7 @@
     "tools": null,
     "vision": null
   },
-  "description": "Qwen3.6-35B-A3B UD-Q4_K_S on two Radeon PRO W7800 48GB via Lemonade Server v11.9.0, llama.cpp ROCm nightly b1323, tensor-split 0.5,0.5, 8192 context.",
+  "description": "Qwen3.6-35B-A3B UD-Q4_K_S on two Radeon PRO W7800 48GB via Lemonade Server v11.9.0, llama.cpp ROCm nightly b1323, tensor-split 0.5,0.5, load-mode dio, 8192 context.",
   "engine": {
     "graph_mode": null,
     "name": "llama.cpp",
@@ -107,10 +107,10 @@
       "0.0.0.0"
     ],
     "asset_ids": [
-      "lemonade-server-rocm-b1323-tp2-config"
+      "lemonade-server-rocm-b1323-tp2-dio-config"
     ],
     "container": {
-      "captured_at": "2026-09-06T20:16:02Z",
+      "captured_at": "2026-09-06T21:48:18Z",
       "compose_file": null,
       "digest": "sha256:7c780707cd695392a8680f557c7c1d55521383a71b1c4c5a9d9e6a226a1bee91",
       "image": "ghcr.io/lemonade-sdk/lemonade-server:v11.9.0@sha256:7c780707cd695392a8680f557c7c1d55521383a71b1c4c5a9d9e6a226a1bee91",
@@ -118,7 +118,7 @@
       "runtime": "docker",
       "source": [
         {
-          "captured_at": "2026-09-06T20:16:02Z",
+          "captured_at": "2026-09-06T21:48:18Z",
           "kind": "acceptance-run",
           "url": "https://github.com/0xSero/local-ai-registry"
         }
@@ -140,7 +140,7 @@
       },
       {
         "read_only": true,
-        "source": "asset/lemonade-server-rocm-b1323-tp2.cfg",
+        "source": "asset/lemonade-server-rocm-b1323-tp2-dio.cfg",
         "target": "/opt/lemonade/.config/lemonade/config.json"
       }
     ],
@@ -148,7 +148,7 @@
   },
   "metadata": {
     "acceptance": {
-      "accepted_at": "2026-09-06T20:16:02Z",
+      "accepted_at": "2026-09-06T21:48:18Z",
       "harness": "local-ai validate",
       "served_model_id": "Qwen3.6-35B-A3B-UD-Q4_K_S"
     },

@@ -7,7 +7,9 @@
       "glm-5-3-flash-multimodal-chat-template",
       "glm-5-3-flash-vllm-sparse-attn-indexer-kpool",
       "lemonade-server-rocm-b1323-config",
+      "lemonade-server-rocm-b1323-dio-config",
       "lemonade-server-rocm-b1323-tp2-config",
+      "lemonade-server-rocm-b1323-tp2-dio-config",
       "ornith15-35b-a3b-exl3-4bpw-tabbyapi-config",
       "qwen359b-exl3-4bpw-128k-q4-tabbyapi-config",
       "qwen359b-exl3-4bpw-256k-q4-tabbyapi-config",
@@ -8157,7 +8159,7 @@
     ]
   },
   "counts": {
-    "asset": 13,
+    "asset": 15,
     "benchmark": 118,
     "hardware": 109,
     "model": 810,
