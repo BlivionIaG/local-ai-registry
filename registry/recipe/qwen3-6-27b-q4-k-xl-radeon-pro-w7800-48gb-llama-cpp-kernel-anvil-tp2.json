@@ -17,7 +17,7 @@
   "id": "qwen3-6-27b-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2",
   "launch": {
     "container": {
-      "captured_at": "2026-09-06T15:56:25Z",
+      "captured_at": "2026-09-06T16:31:16Z",
       "compose_file": null,
       "digest": null,
       "image": null,
@@ -25,7 +25,7 @@
       "runtime": null,
       "source": [
         {
-          "captured_at": "2026-09-06T15:56:25Z",
+          "captured_at": "2026-09-06T16:31:16Z",
           "kind": "lab-measurement",
           "publisher": "par1-cs13",
           "url": "https://github.com/0xSero/local-ai-registry"
@@ -45,10 +45,10 @@
   },
   "model_instance_id": "unsloth-qwen3-6-27b-gguf--ud-q4-k-xl",
   "provenance": {
-    "captured_at": "2026-09-06T15:56:25Z",
+    "captured_at": "2026-09-06T16:31:16Z",
     "sources": [
       {
-        "captured_at": "2026-09-06T15:56:25Z",
+        "captured_at": "2026-09-06T16:31:16Z",
         "kind": "lab-measurement",
         "publisher": "par1-cs13",
         "url": "https://github.com/0xSero/local-ai-registry"
