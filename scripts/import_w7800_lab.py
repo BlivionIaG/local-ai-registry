@@ -26,6 +26,14 @@ NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 HW = "radeon-pro-w7800-48gb"
 AMD = "https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7800-48gb.html"
 REGISTRY = "https://github.com/0xSero/local-ai-registry"
+LEMONADE_IMAGE = (
+    "ghcr.io/lemonade-sdk/lemonade-server:v11.9.0"
+    "@sha256:7c780707cd695392a8680f557c7c1d55521383a71b1c4c5a9d9e6a226a1bee91"
+)
+LEMONADE_IMAGE_CONFIG = (
+    "https://ghcr.io/v2/lemonade-sdk/lemonade-server/manifests/"
+    "sha256:7c780707cd695392a8680f557c7c1d55521383a71b1c4c5a9d9e6a226a1bee91"
+)
 VENDOR = {
     "captured_at": NOW,
     "kind": "vendor",
@@ -122,6 +130,30 @@ def unpublished(label: str) -> dict:
         },
         "state": "unknown",
         "unit": "tflops",
+    }
+
+
+def lemonade_draft() -> dict:
+    return {
+        "accelerator_backend": "amd-rocm",
+        "arguments": ["--host", "0.0.0.0"],
+        "container_port": 13305,
+        "entrypoint": "/opt/lemonade/lemond",
+        "environment": {},
+        "host_port": 13305,
+        "image": LEMONADE_IMAGE,
+        "ipc": "host",
+        "kind": "docker",
+        "mounts": [
+            {"read_only": False, "source": "~/.cache/huggingface", "target": "/opt/lemonade/.cache/huggingface"},
+            {"read_only": False, "source": "~/.config/lemonade", "target": "/opt/lemonade/.config/lemonade"},
+        ],
+        "shm_size": "16g",
+        "synthesized": {
+            "generated_at": NOW,
+            "image_provenance": LEMONADE_IMAGE_CONFIG,
+            "template": "lemonade-server-v11.9.0",
+        },
     }
 
 
@@ -347,7 +379,18 @@ def recipe_and_sweep(sweep_path: Path) -> None:
         "speed_sweep_ids": [sweep["id"]],
         "status": "candidate",
     }
+    if series == "lemonade":
+        recipe["draft_launch"] = lemonade_draft()
     recipe["facts"] = facts_for(recipe)
+    if series == "lemonade":
+        recipe["facts"]["draft_launch.entrypoint"] = {
+            "state": "known",
+            "reason": "linux-amd64-container-config-entrypoint",
+            "provenance": {
+                "captured_at": NOW,
+                "sources": [{"captured_at": NOW, "kind": "container-config", "url": LEMONADE_IMAGE_CONFIG}],
+            },
+        }
     dump(REG / "recipe" / f"{rid}.json", recipe)
 
     dump(
