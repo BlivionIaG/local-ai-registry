@@ -30,13 +30,12 @@
   ],
   "schema_version": "local-ai-registry/v1",
   "source": {
-    "host": "par1-cs13",
+    "commit": null,
     "kind": "lab-measurement",
     "notes": "HIP graphs on, smithy patch in binary unused. -ngl 99 -fa on -b 2048 -ub 512 f16 KV.",
     "paths": [
       "raw/stock-hip-c060ca9/qwen36-35b-a3b-q4-k-s-dual-tensor.json"
     ],
-    "repository": null,
-    "url": null
+    "repository": "https://github.com/0xSero/local-ai-registry"
   }
 }

@@ -32,7 +32,7 @@
       "context_tokens": 8192,
       "decode_tok_s": null,
       "decode_tok_s_per_stream": null,
-      "output_tokens": 128,
+      "output_tokens": 0,
       "peak_vram_gb": null,
       "prefill_tok_s": 1792.804321,
       "samples": 3,
@@ -44,7 +44,7 @@
       "context_tokens": 32768,
       "decode_tok_s": null,
       "decode_tok_s_per_stream": null,
-      "output_tokens": 128,
+      "output_tokens": 0,
       "peak_vram_gb": null,
       "prefill_tok_s": 1076.603654,
       "samples": 3,
@@ -54,14 +54,13 @@
   ],
   "schema_version": "local-ai-registry/v1",
   "source": {
-    "host": "par1-cs13",
+    "commit": null,
     "kind": "lab-measurement",
     "notes": "Bundled HIP 7.16 isolated from host ROCm 7.2. Same llama-bench flags as stock. Fastest 1× long-ctx: p8192 and p32768.",
     "paths": [
       "raw/lemonade-b1323/qwen3-coder-30b-a3b-q4-k-m-lemonade-single.json",
       "raw/longctx-fast/qwen3-coder-30b-a3b-q4-k-m-fast-longctx.json"
     ],
-    "repository": null,
-    "url": null
+    "repository": "https://github.com/0xSero/local-ai-registry"
   }
 }

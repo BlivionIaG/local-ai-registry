@@ -14,7 +14,7 @@
     "max_context_tokens": 32888,
     "max_prompt_tokens": 510,
     "peak_generation_tps": 47.28010108740083,
-    "peak_prompt_tps": 526.3538829102113,
+    "peak_prompt_tps": 574.5713862529709,
     "point_count": 3
   },
   "recipe_id": "qwen3-6-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
@@ -58,7 +58,7 @@
   ],
   "schema_version": "local-ai-registry/v1",
   "source": {
-    "host": "par1-cs13",
+    "commit": null,
     "kind": "lab-measurement",
     "notes": "Not llama-bench. llama-server --spec-type draft-mtp --spec-draft-n-max 3. /completion cache_prompt=false, ~510-token prompt, n_predict=128, 5 reps after warmup. Qwen3.6 uses unsloth *-MTP-GGUF (not the trunk GGUF). Weights unsloth/Qwen3.6-27B-MTP-GGUF/Qwen3.6-27B-Q4_K_M.gguf. Fastest 1× long-ctx: p8192 and p32768.",
     "paths": [
@@ -66,7 +66,6 @@
       "raw/longctx-fast/qwen36-27b-q4-k-m-fast-p32768.json",
       "raw/longctx-fast/qwen36-27b-q4-k-m-fast-p8192.json"
     ],
-    "repository": null,
-    "url": null
+    "repository": "https://github.com/0xSero/local-ai-registry"
   }
 }

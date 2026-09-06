@@ -5,19 +5,104 @@
     "tools": null,
     "vision": null
   },
-  "description": "Observed lab run on par1-cs13 (2× AMD Radeon PRO W7800 48GB, gfx1100, ROCm 7.2). Evidence for compatibility, not an executable launch contract.",
+  "description": "Observed llama.cpp HIP run. Evidence for compatibility, not an executable launch contract.",
   "engine": {
     "graph_mode": null,
     "name": "llama.cpp",
     "version": "c060ca9+smithy"
   },
-  "facts": {},
+  "facts": {
+    "capabilities.chat": {
+      "provenance": {
+        "captured_at": "2026-08-27T06:04:13.773Z",
+        "sources": [
+          {
+            "captured_at": "2026-08-27T06:04:13.773Z",
+            "kind": "registry-enrichment",
+            "url": "https://github.com/0xSero/local-ai-registry"
+          }
+        ]
+      },
+      "reason": "capability-not-verified",
+      "state": "unknown"
+    },
+    "capabilities.reasoning": {
+      "provenance": {
+        "captured_at": "2026-08-27T06:04:13.773Z",
+        "sources": [
+          {
+            "captured_at": "2026-08-27T06:04:13.773Z",
+            "kind": "registry-enrichment",
+            "url": "https://github.com/0xSero/local-ai-registry"
+          }
+        ]
+      },
+      "reason": "capability-not-verified",
+      "state": "unknown"
+    },
+    "capabilities.tools": {
+      "provenance": {
+        "captured_at": "2026-08-27T06:04:13.773Z",
+        "sources": [
+          {
+            "captured_at": "2026-08-27T06:04:13.773Z",
+            "kind": "registry-enrichment",
+            "url": "https://github.com/0xSero/local-ai-registry"
+          }
+        ]
+      },
+      "reason": "capability-not-verified",
+      "state": "unknown"
+    },
+    "capabilities.vision": {
+      "provenance": {
+        "captured_at": "2026-08-27T06:04:13.773Z",
+        "sources": [
+          {
+            "captured_at": "2026-08-27T06:04:13.773Z",
+            "kind": "registry-enrichment",
+            "url": "https://github.com/0xSero/local-ai-registry"
+          }
+        ]
+      },
+      "reason": "capability-not-verified",
+      "state": "unknown"
+    },
+    "engine.graph_mode": {
+      "provenance": {
+        "captured_at": "2026-08-27T06:04:13.773Z",
+        "sources": [
+          {
+            "captured_at": "2026-08-27T06:04:13.773Z",
+            "kind": "registry-enrichment",
+            "url": "https://github.com/0xSero/local-ai-registry"
+          }
+        ]
+      },
+      "reason": "runtime-detail-not-published",
+      "state": "unknown"
+    },
+    "serving.kv_cache_tokens": {
+      "provenance": {
+        "captured_at": "2026-08-27T06:04:13.773Z",
+        "sources": [
+          {
+            "captured_at": "2026-08-27T06:04:13.773Z",
+            "kind": "registry-enrichment",
+            "url": "https://github.com/0xSero/local-ai-registry"
+          }
+        ]
+      },
+      "reason": "kv-cache-capacity-not-published",
+      "state": "unknown"
+    }
+  },
   "hardware_count": 1,
   "hardware_id": "radeon-pro-w7800-48gb",
   "id": "qwen3-6-27b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp1",
   "launch": {
     "container": {
-      "captured_at": "2026-09-06T16:31:16Z",
+      "captured_at": "2026-09-06T18:31:05Z",
       "compose_file": null,
       "digest": null,
       "image": null,
@@ -25,32 +110,62 @@
       "runtime": null,
       "source": [
         {
-          "captured_at": "2026-09-06T16:31:16Z",
-          "kind": "lab-measurement",
-          "publisher": "par1-cs13",
+          "captured_at": "2026-09-06T18:31:05Z",
+          "kind": "recipe-launch",
           "url": "https://github.com/0xSero/local-ai-registry"
         }
       ],
       "state": "none"
     },
-    "kind": "reference"
+    "kind": "reference",
+    "source": "0xsero"
   },
   "metadata": {
     "lab": {
+      "backend": "rocm",
+      "hardware_label": "Radeon PRO W7800 48GB",
       "host": "par1-cs13",
       "notes": "SMITHY_CONFIG from autoforge. -b 8192 -ub 64 -ctk/-ctv q8_0 --poll 0. Server recipe; loses llama-bench prefill.",
+      "observed_command": "llama-bench -p 512 -n 128 -r 5 -ngl 99 -fa on -b 8192 -ub 64 -ctk q8_0 -ctv q8_0 --poll 0 -sm none",
       "raw_path": "raw/tuned-kernel-anvil/qwen36-27b-iq4-xs-tuned-single.json",
-      "series": "tuned"
+      "series": "tuned",
+      "tokenized": {
+        "arguments": [
+          "llama-bench",
+          "-p",
+          "512",
+          "-n",
+          "128",
+          "-r",
+          "5",
+          "-ngl",
+          "99",
+          "-fa",
+          "on",
+          "-b",
+          "8192",
+          "-ub",
+          "64",
+          "-ctk",
+          "q8_0",
+          "-ctv",
+          "q8_0",
+          "--poll",
+          "0",
+          "-sm",
+          "none"
+        ],
+        "fidelity": "faithful"
+      }
     }
   },
   "model_instance_id": "unsloth-qwen3-6-27b-gguf--iq4-xs",
   "provenance": {
-    "captured_at": "2026-09-06T16:31:16Z",
+    "captured_at": "2026-09-06T18:31:05Z",
     "sources": [
       {
-        "captured_at": "2026-09-06T16:31:16Z",
-        "kind": "lab-measurement",
-        "publisher": "par1-cs13",
+        "captured_at": "2026-09-06T18:31:05Z",
+        "kind": "normalized-recipe",
         "url": "https://github.com/0xSero/local-ai-registry"
       }
     ]

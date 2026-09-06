@@ -30,13 +30,12 @@
   ],
   "schema_version": "local-ai-registry/v1",
   "source": {
-    "host": "par1-cs13",
+    "commit": null,
     "kind": "lab-measurement",
     "notes": "SMITHY_CONFIG from autoforge. -b 8192 -ub 64 -ctk/-ctv q8_0 --poll 0. Server recipe; loses llama-bench prefill.",
     "paths": [
       "raw/tuned-kernel-anvil/gemma4-26b-a4b-q4-k-s-tuned-dual-tensor.json"
     ],
-    "repository": null,
-    "url": null
+    "repository": "https://github.com/0xSero/local-ai-registry"
   }
 }

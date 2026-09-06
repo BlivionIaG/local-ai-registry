@@ -16,17 +16,16 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from enrich_registry import facts_for
+from sweep_metrics import derive_metrics
+from tokenize_observed_command import parse_observed_command, tokenized_record
+
 REG = Path(__file__).resolve().parent.parent / "registry"
 PKG = Path(__file__).resolve().parents[2] / "registry-data" / "w7800-local-ai-registry"
 NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 HW = "radeon-pro-w7800-48gb"
 AMD = "https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7800-48gb.html"
-SRC = {
-    "captured_at": NOW,
-    "kind": "lab-measurement",
-    "url": "https://github.com/0xSero/local-ai-registry",
-    "publisher": "par1-cs13",
-}
+REGISTRY = "https://github.com/0xSero/local-ai-registry"
 VENDOR = {
     "captured_at": NOW,
     "kind": "vendor",
@@ -85,11 +84,60 @@ def dump(path: Path, obj: dict) -> None:
     path.write_text(json.dumps(obj, indent=2, sort_keys=True, ensure_ascii=False) + "\n")
 
 
-def known(path: str) -> dict:
-    return {
+def known(unit: str | None = None) -> dict:
+    row = {
         "state": "known",
         "provenance": {"captured_at": NOW, "sources": [VENDOR]},
     }
+    if unit:
+        row["unit"] = unit
+    return row
+
+
+def unknown_commercial(detail: str) -> dict:
+    return {
+        "state": "unknown",
+        "reason": {"code": "not-captured", "detail": detail},
+        "provenance": {"captured_at": NOW, "sources": [VENDOR]},
+    }
+
+
+def dense(value: float, structured: bool = True) -> dict:
+    out = {
+        "dense": {
+            "provenance": {"captured_at": NOW, "sources": [VENDOR]},
+            "state": "known",
+            "unit": "tflops",
+            "value": value,
+        }
+    }
+    if structured:
+        out["structured_2_4"] = unpublished("structured 2:4")
+    return out
+
+
+def unpublished(label: str) -> dict:
+    return {
+        "provenance": {"captured_at": NOW, "sources": [VENDOR]},
+        "reason": {
+            "code": "not-published",
+            "detail": f"No {label} throughput was published for this exact accelerator; no FLOPS inferred.",
+        },
+        "state": "unknown",
+        "unit": "tflops",
+    }
+
+
+def observed_command(series: str, tp: int) -> str:
+    split = "-sm none" if tp == 1 else "-sm tensor -ts 0.5,0.5"
+    if series == "mtp":
+        return f"llama-server --spec-type draft-mtp --spec-draft-n-max 3 -ngl 99 --flash-attn on {split}"
+    if series == "tuned":
+        return (
+            f"llama-bench -p 512 -n 128 -r 5 -ngl 99 -fa on -b 8192 -ub 64 "
+            f"-ctk q8_0 -ctv q8_0 --poll 0 {split}"
+        )
+    return f"llama-bench -p 512 -n 128 -r 5 -ngl 99 -fa on -b 2048 -ub 512 {split}"
 
 
 def write_hardware() -> None:
@@ -98,74 +146,62 @@ def write_hardware() -> None:
         {
             "accelerator": {"count": 1, "unit": "GPU"},
             "accelerator_backend": "amd-rocm",
-            "aliases": ["radeon pro w7800", "w7800 48gb", "gfx1100 w7800"],
+            "aliases": ["radeon pro w7800", "w7800 48gb"],
             "captured_at": "2026-09-06",
+            "commercial": {
+                "availability": unknown_commercial(
+                    "Current purchasable availability was not validated for this partner_workstation_systems channel."
+                ),
+                "channel_status": "partner_workstation_systems",
+                "current_stock": None,
+                "current_street_price": None,
+                "msrp": None,
+                "prices": [],
+            },
             "compute": {
                 "architecture": "AMD RDNA 3",
                 "compute_units": 70,
-                "gfx": "gfx1100",
                 "stats": {
-                    "fp16": {
-                        "dense": {
-                            "provenance": {"captured_at": NOW, "sources": [VENDOR]},
-                            "state": "known",
-                            "unit": "tflops",
-                            "value": 90.4,
-                        }
-                    },
-                    "fp32": {
-                        "dense": {
-                            "provenance": {"captured_at": NOW, "sources": [VENDOR]},
-                            "state": "known",
-                            "unit": "tflops",
-                            "value": 45.2,
-                        }
-                    },
-                    "int4": {
-                        "dense": {
-                            "provenance": {"captured_at": NOW, "sources": [VENDOR]},
-                            "state": "known",
-                            "unit": "tflops",
-                            "value": 181,
-                        }
-                    },
-                    "int8": {
-                        "dense": {
-                            "provenance": {"captured_at": NOW, "sources": [VENDOR]},
-                            "state": "known",
-                            "unit": "tflops",
-                            "value": 90.4,
-                        }
-                    },
+                    "bf16": {"unknown": unpublished("bf16")},
+                    "fp16": dense(90.4),
+                    "fp32": dense(45.2),
+                    "fp8": {"unknown": unpublished("fp8")},
+                    "int4": dense(181, structured=False),
+                    "int8": dense(90.4, structured=False),
+                    "tf32": {"unknown": unpublished("tf32")},
                 },
                 "stream_processors": 4480,
             },
             "facts": {
-                "accelerator.count": known("accelerator.count"),
-                "compute.architecture": known("compute.architecture"),
-                "compute.compute_units": known("compute.compute_units"),
-                "compute.stream_processors": known("compute.stream_processors"),
-                "memory.bandwidth_gb_per_s": known("memory.bandwidth_gb_per_s"),
-                "memory.vram_gb": known("memory.vram_gb"),
-                "memory.vram_type": known("memory.vram_type"),
+                "accelerator.count": known("GPU"),
+                "commercial.availability": unknown_commercial(
+                    "Current purchasable availability was not validated for this partner_workstation_systems channel."
+                ),
+                "commercial.channel_status": known(),
+                "commercial.current_stock": unknown_commercial("Audit availability note: unknown."),
+                "commercial.current_street_price": unknown_commercial(
+                    "No current validated retailer offer captured"
+                ),
+                "commercial.msrp": unknown_commercial("No manufacturer launch price captured"),
+                "commercial.prices": unknown_commercial("No manufacturer launch price captured"),
+                "compute.architecture": known(),
+                "compute.compute_units": known(),
+                "compute.stream_processors": known(),
+                "memory.bandwidth_gb_per_s": known(),
+                "memory.vram_gb": known(),
+                "memory.vram_type": known(),
             },
             "family": "radeon-pro-w7800",
             "id": HW,
             "kind": "discrete",
             "memory": {
                 "bandwidth_gb_per_s": 864,
-                "bus_width_bits": 384,
                 "cpu_memory_gb": None,
                 "vram_gb": 48,
                 "vram_type": "GDDR6",
             },
-            "name": "AMD Radeon PRO W7800 48GB",
-            "notes": [
-                "48 GB SKU. A 32 GB W7800 also exists; do not collapse them.",
-                "384-bit memory bus (not 256-bit 32 GB W7800).",
-                "Lab host par1-cs13 has two identical cards (hardware_count 1 or 2).",
-            ],
-            "product_names": ["AMD Radeon PRO W7800"],
+            "name": "Radeon PRO W7800",
+            "product_names": [],
             "products": [],
             "schema_version": "local-ai-registry/v1",
             "sources": [VENDOR],
@@ -226,17 +262,47 @@ def recipe_and_sweep(sweep_path: Path) -> None:
     tp = sweep.get("hardware_count") or 1
     notes = (sweep.get("source") or {}).get("notes") or ""
     rows_in = sweep.get("rows") or []
-    row = rows_in[0]
-    ctx = int(row.get("context_tokens") or 512)
-    out_n = int(row.get("output_tokens") or 128)
-    max_ctx = int((sweep.get("metrics") or {}).get("max_context_tokens") or (ctx + out_n))
+    command = observed_command(series, tp)
+    tokenized = tokenized_record(parse_observed_command(command))
+    out_rows = []
+    for r in rows_in:
+        out_rows.append(
+            {
+                "concurrency": 1,
+                "context_tokens": r.get("context_tokens"),
+                "decode_tok_s": r.get("decode_tok_s"),
+                "decode_tok_s_per_stream": r.get("decode_tok_s_per_stream") or r.get("decode_tok_s"),
+                "output_tokens": r.get("output_tokens") if r.get("output_tokens") is not None else 128,
+                "peak_vram_gb": None,
+                "prefill_tok_s": r.get("prefill_tok_s"),
+                "samples": r.get("samples") or 5,
+                "status": "observed",
+                "ttft_ms_p50": None,
+            }
+        )
+    metrics = derive_metrics(out_rows, latest_point_at=sweep.get("measured_at"))
+    metrics["inference_engine_version"] = version
+    metrics["decode_mode"] = decode_mode
+    src_metrics = sweep.get("metrics") or {}
+    if src_metrics.get("max_context_tokens"):
+        metrics["max_context_tokens"] = max(
+            int(metrics.get("max_context_tokens") or 0),
+            int(src_metrics["max_context_tokens"]),
+        )
+    for key in (
+        "decode8k_tps",
+        "decode8k_context_tokens",
+        "decode32k_tps",
+        "decode32k_context_tokens",
+        "max_prompt_tokens",
+    ):
+        if src_metrics.get(key) is not None:
+            metrics[key] = src_metrics[key]
+    max_ctx = int(metrics.get("max_context_tokens") or 0) or None
 
     recipe = {
         "capabilities": {"chat": None, "reasoning": None, "tools": None, "vision": None},
-        "description": (
-            "Observed lab run on par1-cs13 (2× AMD Radeon PRO W7800 48GB, gfx1100, ROCm 7.2). "
-            "Evidence for compatibility, not an executable launch contract."
-        ),
+        "description": "Observed llama.cpp HIP run. Evidence for compatibility, not an executable launch contract.",
         "engine": {"graph_mode": None, "name": "llama.cpp", "version": version},
         "facts": {},
         "hardware_count": tp,
@@ -250,21 +316,29 @@ def recipe_and_sweep(sweep_path: Path) -> None:
                 "image": None,
                 "reason": "reference-only-launch",
                 "runtime": None,
-                "source": [SRC],
+                "source": [{"captured_at": NOW, "kind": "recipe-launch", "url": REGISTRY}],
                 "state": "none",
             },
             "kind": "reference",
+            "source": "0xsero",
         },
         "metadata": {
             "lab": {
+                "backend": "rocm",
+                "hardware_label": "Radeon PRO W7800 48GB",
                 "host": "par1-cs13",
                 "notes": notes,
+                "observed_command": command,
                 "raw_path": (sweep.get("source") or {}).get("paths", [None])[0],
                 "series": series,
+                "tokenized": tokenized,
             }
         },
         "model_instance_id": instance_id,
-        "provenance": {"captured_at": NOW, "sources": [SRC]},
+        "provenance": {
+            "captured_at": NOW,
+            "sources": [{"captured_at": NOW, "kind": "normalized-recipe", "url": REGISTRY}],
+        },
         "recipe_source": "0xsero",
         "schema_version": "local-ai-registry/v1",
         "serving": {
@@ -276,64 +350,28 @@ def recipe_and_sweep(sweep_path: Path) -> None:
         "speed_sweep_ids": [sweep["id"]],
         "status": "candidate",
     }
+    recipe["facts"] = facts_for(recipe)
     dump(REG / "recipe" / f"{rid}.json", recipe)
 
-    metrics = {
-        "concurrency": 1,
-        "decode_mode": decode_mode,
-        "inference_engine_version": version,
-        "latest_point_at": sweep.get("measured_at"),
-        "max_context_tokens": max_ctx,
-        "max_prompt_tokens": ctx,
-        "peak_generation_tps": sweep["metrics"]["peak_generation_tps"],
-        "peak_prompt_tps": sweep["metrics"]["peak_prompt_tps"],
-        "point_count": len(rows_in) or 1,
-    }
-    src_metrics = sweep.get("metrics") or {}
-    for key in (
-        "decode8k_tps",
-        "decode8k_context_tokens",
-        "decode32k_tps",
-        "decode32k_context_tokens",
-        "decode_max_context_tps",
-        "decode_max_context_tokens",
-    ):
-        if src_metrics.get(key) is not None:
-            metrics[key] = src_metrics[key]
-    out_rows = []
-    for r in rows_in:
-        out_rows.append(
-            {
-                "concurrency": 1,
-                "context_tokens": r.get("context_tokens"),
-                "decode_tok_s": r.get("decode_tok_s"),
-                "decode_tok_s_per_stream": r.get("decode_tok_s_per_stream") or r.get("decode_tok_s"),
-                "output_tokens": r.get("output_tokens") or 128,
-                "peak_vram_gb": None,
-                "prefill_tok_s": r.get("prefill_tok_s"),
-                "samples": r.get("samples") or 5,
-                "status": "observed",
-                "ttft_ms_p50": None,
-            }
-        )
-    out_sweep = {
-        "accepted_at": None,
-        "id": sweep["id"],
-        "measured_at": sweep.get("measured_at"),
-        "metrics": metrics,
-        "recipe_id": rid,
-        "rows": out_rows,
-        "schema_version": "local-ai-registry/v1",
-        "source": {
-            "kind": "lab-measurement",
-            "host": "par1-cs13",
-            "notes": notes,
-            "paths": (sweep.get("source") or {}).get("paths"),
-            "repository": None,
-            "url": None,
+    dump(
+        REG / "speed-sweep" / f"{sweep['id']}.json",
+        {
+            "accepted_at": None,
+            "id": sweep["id"],
+            "measured_at": sweep.get("measured_at"),
+            "metrics": metrics,
+            "recipe_id": rid,
+            "rows": out_rows,
+            "schema_version": "local-ai-registry/v1",
+            "source": {
+                "commit": None,
+                "kind": "lab-measurement",
+                "notes": notes,
+                "paths": (sweep.get("source") or {}).get("paths"),
+                "repository": REGISTRY,
+            },
         },
-    }
-    dump(REG / "speed-sweep" / f"{sweep['id']}.json", out_sweep)
+    )
 
 
 def main() -> int:
