@@ -3,7 +3,8 @@
 
 Reads LocalMaxxing/registry-data/w7800-local-ai-registry/. Writes hardware,
 missing model-instances, recipes, and speed-sweeps. launch.kind is reference;
-status stays candidate. Then:
+status stays candidate. Lemonade docker contracts are added only by
+accept_recipe.py after a live /v1 run, not by this importer. Then:
 
     python3 scripts/format_registry.py
     python3 scripts/curate_registry.py --index-only
@@ -26,14 +27,6 @@ NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 HW = "radeon-pro-w7800-48gb"
 AMD = "https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7800-48gb.html"
 REGISTRY = "https://github.com/0xSero/local-ai-registry"
-LEMONADE_IMAGE = (
-    "ghcr.io/lemonade-sdk/lemonade-server:v11.9.0"
-    "@sha256:7c780707cd695392a8680f557c7c1d55521383a71b1c4c5a9d9e6a226a1bee91"
-)
-LEMONADE_IMAGE_CONFIG = (
-    "https://ghcr.io/v2/lemonade-sdk/lemonade-server/manifests/"
-    "sha256:7c780707cd695392a8680f557c7c1d55521383a71b1c4c5a9d9e6a226a1bee91"
-)
 VENDOR = {
     "captured_at": NOW,
     "kind": "vendor",
@@ -130,37 +123,6 @@ def unpublished(label: str) -> dict:
         },
         "state": "unknown",
         "unit": "tflops",
-    }
-
-
-def lemonade_draft(tp: int = 1) -> dict:
-    config_asset = (
-        "asset/lemonade-server-rocm-b1323.cfg" if tp == 1 else "asset/lemonade-server-rocm-b1323-tp2.cfg"
-    )
-    return {
-        "accelerator_backend": "amd-rocm",
-        "arguments": ["--host", "0.0.0.0"],
-        "container_port": 13305,
-        "entrypoint": "/opt/lemonade/lemond",
-        "environment": {},
-        "host_port": 13305,
-        "image": LEMONADE_IMAGE,
-        "ipc": "host",
-        "kind": "docker",
-        "mounts": [
-            {"read_only": False, "source": "~/.cache/huggingface", "target": "/opt/lemonade/.cache/huggingface"},
-            {
-                "read_only": True,
-                "source": config_asset,
-                "target": "/opt/lemonade/.config/lemonade/config.json",
-            },
-        ],
-        "shm_size": "16g",
-        "synthesized": {
-            "generated_at": NOW,
-            "image_provenance": LEMONADE_IMAGE_CONFIG,
-            "template": "lemonade-server-v11.9.0",
-        },
     }
 
 
@@ -386,18 +348,7 @@ def recipe_and_sweep(sweep_path: Path) -> None:
         "speed_sweep_ids": [sweep["id"]],
         "status": "candidate",
     }
-    if series == "lemonade":
-        recipe["draft_launch"] = lemonade_draft(tp)
     recipe["facts"] = facts_for(recipe)
-    if series == "lemonade":
-        recipe["facts"]["draft_launch.entrypoint"] = {
-            "state": "known",
-            "reason": "linux-amd64-container-config-entrypoint",
-            "provenance": {
-                "captured_at": NOW,
-                "sources": [{"captured_at": NOW, "kind": "container-config", "url": LEMONADE_IMAGE_CONFIG}],
-            },
-        }
     dump(REG / "recipe" / f"{rid}.json", recipe)
 
     dump(
