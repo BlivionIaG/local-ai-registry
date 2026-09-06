@@ -169,7 +169,7 @@
   "serving": {
     "kv_cache_tokens": null,
     "max_concurrency": 1,
-    "max_context_tokens": 640,
+    "max_context_tokens": 32896,
     "tensor_parallel": 1
   },
   "speed_sweep_ids": [

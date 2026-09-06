@@ -267,7 +267,7 @@
       "model_count": 22,
       "peak_decode_tok_s": 154.1202516460598,
       "peak_prefill_tok_s": 2320.481571,
-      "point_count": 154,
+      "point_count": 156,
       "sweep_count": 124
     },
     "rtx-2000-ada-16gb": {
