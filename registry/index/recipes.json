@@ -32631,6 +32631,23 @@
         "vision": null
       },
       "engine": "llama.cpp",
+      "hardware_count": 2,
+      "hardware_id": "radeon-pro-w7800-48gb",
+      "has_evidence": true,
+      "id": "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
+      "launch_kind": "reference",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q4-k-s",
+      "recipe_source": "0xsero",
+      "status": "candidate"
+    },
+    {
+      "capabilities": {
+        "chat": null,
+        "reasoning": null,
+        "tools": null,
+        "vision": null
+      },
+      "engine": "llama.cpp",
       "hardware_count": 1,
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,

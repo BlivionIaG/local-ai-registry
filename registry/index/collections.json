@@ -4360,6 +4360,7 @@
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1",
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2",
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
+      "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-tp1",
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-tp2",
       "qwen3-6-27b-q4-k-s-rtx-3060-12gb-llama-cpp-tp2",
@@ -7496,6 +7497,7 @@
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-sweep",
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2-sweep",
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1-sweep",
+      "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2-sweep",
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-tp1-sweep",
       "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-tp2-sweep",
       "qwen3-6-27b-q4-k-s-rtx-3060-12gb-llama-cpp-tp2-sweep",
@@ -8158,8 +8160,8 @@
     "model": 810,
     "model_instance": 1162,
     "price": 218,
-    "recipe": 2588,
-    "speed_sweep": 3118
+    "recipe": 2589,
+    "speed_sweep": 3119
   },
   "resolver_rule": "Resolve <field>_id from <field>/<id>.json and <field>_ids as an array of those records; underscores in field names become hyphens in collection directories. Resolve price ids from price/<product-id>/<region>.json. Reverse lookups live beside this file: recipes.json (compact filter rows), recipes-by-hardware.json, instances-by-model.json, benchmarks-by-model.json, prices-by-hardware.json, hardware-speed-evidence.json, recommendations.json (one validated recipe per hardware id).",
   "schema_version": "local-ai-registry/v1"

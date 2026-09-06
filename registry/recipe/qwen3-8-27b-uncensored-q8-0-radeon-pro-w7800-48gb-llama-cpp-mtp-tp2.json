@@ -17,7 +17,7 @@
   "id": "qwen3-8-27b-uncensored-q8-0-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
   "launch": {
     "container": {
-      "captured_at": "2026-09-05T22:57:26Z",
+      "captured_at": "2026-09-06T12:41:07Z",
       "compose_file": null,
       "digest": null,
       "image": null,
@@ -25,7 +25,7 @@
       "runtime": null,
       "source": [
         {
-          "captured_at": "2026-09-05T22:57:26Z",
+          "captured_at": "2026-09-06T12:41:07Z",
           "kind": "lab-measurement",
           "publisher": "par1-cs13",
           "url": "https://github.com/0xSero/local-ai-registry"
@@ -45,10 +45,10 @@
   },
   "model_instance_id": "orcarouter-qwen3-8-27b-uncensored-gguf--q8-0",
   "provenance": {
-    "captured_at": "2026-09-05T22:57:26Z",
+    "captured_at": "2026-09-06T12:41:07Z",
     "sources": [
       {
-        "captured_at": "2026-09-05T22:57:26Z",
+        "captured_at": "2026-09-06T12:41:07Z",
         "kind": "lab-measurement",
         "publisher": "par1-cs13",
         "url": "https://github.com/0xSero/local-ai-registry"

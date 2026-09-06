@@ -225,9 +225,11 @@ def recipe_and_sweep(sweep_path: Path) -> None:
     version, decode_mode = engines[series]
     tp = sweep.get("hardware_count") or 1
     notes = (sweep.get("source") or {}).get("notes") or ""
-    row = sweep["rows"][0]
+    rows_in = sweep.get("rows") or []
+    row = rows_in[0]
     ctx = int(row.get("context_tokens") or 512)
     out_n = int(row.get("output_tokens") or 128)
+    max_ctx = int((sweep.get("metrics") or {}).get("max_context_tokens") or (ctx + out_n))
 
     recipe = {
         "capabilities": {"chat": None, "reasoning": None, "tools": None, "vision": None},
@@ -268,7 +270,7 @@ def recipe_and_sweep(sweep_path: Path) -> None:
         "serving": {
             "kv_cache_tokens": None,
             "max_concurrency": 1,
-            "max_context_tokens": ctx + out_n,
+            "max_context_tokens": max_ctx,
             "tensor_parallel": tp,
         },
         "speed_sweep_ids": [sweep["id"]],
@@ -276,36 +278,51 @@ def recipe_and_sweep(sweep_path: Path) -> None:
     }
     dump(REG / "recipe" / f"{rid}.json", recipe)
 
+    metrics = {
+        "concurrency": 1,
+        "decode_mode": decode_mode,
+        "inference_engine_version": version,
+        "latest_point_at": sweep.get("measured_at"),
+        "max_context_tokens": max_ctx,
+        "max_prompt_tokens": ctx,
+        "peak_generation_tps": sweep["metrics"]["peak_generation_tps"],
+        "peak_prompt_tps": sweep["metrics"]["peak_prompt_tps"],
+        "point_count": len(rows_in) or 1,
+    }
+    src_metrics = sweep.get("metrics") or {}
+    for key in (
+        "decode8k_tps",
+        "decode8k_context_tokens",
+        "decode32k_tps",
+        "decode32k_context_tokens",
+        "decode_max_context_tps",
+        "decode_max_context_tokens",
+    ):
+        if src_metrics.get(key) is not None:
+            metrics[key] = src_metrics[key]
+    out_rows = []
+    for r in rows_in:
+        out_rows.append(
+            {
+                "concurrency": 1,
+                "context_tokens": r.get("context_tokens"),
+                "decode_tok_s": r.get("decode_tok_s"),
+                "decode_tok_s_per_stream": r.get("decode_tok_s_per_stream") or r.get("decode_tok_s"),
+                "output_tokens": r.get("output_tokens") or 128,
+                "peak_vram_gb": None,
+                "prefill_tok_s": r.get("prefill_tok_s"),
+                "samples": r.get("samples") or 5,
+                "status": "observed",
+                "ttft_ms_p50": None,
+            }
+        )
     out_sweep = {
         "accepted_at": None,
         "id": sweep["id"],
         "measured_at": sweep.get("measured_at"),
-        "metrics": {
-            "concurrency": 1,
-            "decode_mode": decode_mode,
-            "inference_engine_version": version,
-            "latest_point_at": sweep.get("measured_at"),
-            "max_context_tokens": ctx + out_n,
-            "max_prompt_tokens": ctx,
-            "peak_generation_tps": sweep["metrics"]["peak_generation_tps"],
-            "peak_prompt_tps": sweep["metrics"]["peak_prompt_tps"],
-            "point_count": 1,
-        },
+        "metrics": metrics,
         "recipe_id": rid,
-        "rows": [
-            {
-                "concurrency": 1,
-                "context_tokens": ctx,
-                "decode_tok_s": row["decode_tok_s"],
-                "decode_tok_s_per_stream": row["decode_tok_s"],
-                "output_tokens": out_n,
-                "peak_vram_gb": None,
-                "prefill_tok_s": row["prefill_tok_s"],
-                "samples": row.get("samples") or 5,
-                "status": "observed",
-                "ttft_ms_p50": None,
-            }
-        ],
+        "rows": out_rows,
         "schema_version": "local-ai-registry/v1",
         "source": {
             "kind": "lab-measurement",
