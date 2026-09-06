@@ -146,7 +146,11 @@ def lemonade_draft() -> dict:
         "kind": "docker",
         "mounts": [
             {"read_only": False, "source": "~/.cache/huggingface", "target": "/opt/lemonade/.cache/huggingface"},
-            {"read_only": False, "source": "~/.config/lemonade", "target": "/opt/lemonade/.config/lemonade"},
+            {
+                "read_only": True,
+                "source": "asset/lemonade-server-rocm-b1323.cfg",
+                "target": "/opt/lemonade/.config/lemonade/config.json",
+            },
         ],
         "shm_size": "16g",
         "synthesized": {

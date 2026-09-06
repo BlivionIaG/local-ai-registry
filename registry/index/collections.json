@@ -6,6 +6,7 @@
       "gemma412bit-exl3-4bpw-128k-q6-tabbyapi-config",
       "glm-5-3-flash-multimodal-chat-template",
       "glm-5-3-flash-vllm-sparse-attn-indexer-kpool",
+      "lemonade-server-rocm-b1323-config",
       "ornith15-35b-a3b-exl3-4bpw-tabbyapi-config",
       "qwen359b-exl3-4bpw-128k-q4-tabbyapi-config",
       "qwen359b-exl3-4bpw-256k-q4-tabbyapi-config",
@@ -7694,6 +7695,7 @@
       "qwen3-6-35b-a3b-q4-k-m-ryzen-ai-max-plus-395-128gb-llama-cpp-tp1-sweep",
       "qwen3-6-35b-a3b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp1-sweep",
       "qwen3-6-35b-a3b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2-sweep",
+      "qwen3-6-35b-a3b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-acceptance",
       "qwen3-6-35b-a3b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-sweep",
       "qwen3-6-35b-a3b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2-sweep",
       "qwen3-6-35b-a3b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1-sweep",
@@ -7828,6 +7830,7 @@
       "qwen3-8-27b-q4-k-m-radeon-ai-pro-r9700-32gb-llama-cpp-tp3-sweep",
       "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp1-sweep",
       "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2-sweep",
+      "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-acceptance",
       "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-sweep",
       "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2-sweep",
       "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1-sweep",
@@ -8151,14 +8154,14 @@
     ]
   },
   "counts": {
-    "asset": 11,
+    "asset": 12,
     "benchmark": 118,
     "hardware": 109,
     "model": 810,
     "model_instance": 1159,
     "price": 218,
     "recipe": 2589,
-    "speed_sweep": 3119
+    "speed_sweep": 3121
   },
   "resolver_rule": "Resolve <field>_id from <field>/<id>.json and <field>_ids as an array of those records; underscores in field names become hyphens in collection directories. Resolve price ids from price/<product-id>/<region>.json. Reverse lookups live beside this file: recipes.json (compact filter rows), recipes-by-hardware.json, instances-by-model.json, benchmarks-by-model.json, prices-by-hardware.json, hardware-speed-evidence.json, recommendations.json (one validated recipe per hardware id).",
   "schema_version": "local-ai-registry/v1"

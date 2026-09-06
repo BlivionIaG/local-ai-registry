@@ -26,9 +26,9 @@
         "target": "/opt/lemonade/.cache/huggingface"
       },
       {
-        "read_only": false,
-        "source": "~/.config/lemonade",
-        "target": "/opt/lemonade/.config/lemonade"
+        "read_only": true,
+        "source": "asset/lemonade-server-rocm-b1323.cfg",
+        "target": "/opt/lemonade/.config/lemonade/config.json"
       }
     ],
     "shm_size": "16g",
