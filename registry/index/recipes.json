@@ -3209,7 +3209,7 @@
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
+      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -3226,7 +3226,7 @@
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
+      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -3243,7 +3243,7 @@
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
+      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -3260,7 +3260,7 @@
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
+      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -3277,7 +3277,7 @@
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
+      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -3294,7 +3294,7 @@
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
+      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -3311,7 +3311,7 @@
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
+      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -3328,7 +3328,7 @@
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
+      "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -30613,7 +30613,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--iq4-xs",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -30630,7 +30630,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--iq4-xs",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -30647,7 +30647,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--iq4-xs",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -30664,7 +30664,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--iq4-xs",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -30715,7 +30715,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--iq4-xs",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -30732,7 +30732,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--iq4-xs",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -33163,7 +33163,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-q6-k-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--q6-k",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q6-k",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -33180,7 +33180,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-q6-k-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--q6-k",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q6-k",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -33197,7 +33197,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-q6-k-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--q6-k",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q6-k",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -33214,7 +33214,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-q6-k-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--q6-k",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q6-k",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -33265,7 +33265,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-q6-k-radeon-pro-w7800-48gb-llama-cpp-tp1",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--q6-k",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q6-k",
       "recipe_source": "0xsero",
       "status": "candidate"
     },
@@ -33282,7 +33282,7 @@
       "has_evidence": true,
       "id": "qwen3-6-27b-q6-k-radeon-pro-w7800-48gb-llama-cpp-tp2",
       "launch_kind": "reference",
-      "model_instance_id": "unsloth-qwen3-6-27b-gguf--q6-k",
+      "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q6-k",
       "recipe_source": "0xsero",
       "status": "candidate"
     },

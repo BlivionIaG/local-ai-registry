@@ -38,8 +38,8 @@ INSTANCES = {
     "qwen36-27b-q4-k-m": ("unsloth-qwen3-6-27b-gguf--q4-k-m", "unsloth-qwen3-6-27b-mtp-gguf--q4-k-m"),
     "qwen36-27b-q4-k-s": ("unsloth-qwen3-6-27b-gguf--q4-k-s", "unsloth-qwen3-6-27b-mtp-gguf--q4-k-s"),
     "qwen36-27b-q4-k-xl": ("unsloth-qwen3-6-27b-gguf--ud-q4-k-xl", "unsloth-qwen3-6-27b-mtp-gguf--ud-q4-k-xl"),
-    "qwen36-27b-q6-k": ("unsloth-qwen3-6-27b-gguf--q6-k", "unsloth-qwen3-6-27b-mtp-gguf--q6-k"),
-    "qwen36-27b-iq4-xs": ("unsloth-qwen3-6-27b-gguf--iq4-xs", "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs"),
+    "qwen36-27b-q6-k": ("unsloth-qwen3-6-27b-mtp-gguf--q6-k", "unsloth-qwen3-6-27b-mtp-gguf--q6-k"),
+    "qwen36-27b-iq4-xs": ("unsloth-qwen3-6-27b-mtp-gguf--iq4-xs", "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs"),
     "qwen38-27b-ud-q4-k-m": ("unsloth-qwen3-8-27b-gguf--ud-q4-k-m", "unsloth-qwen3-8-27b-gguf--ud-q4-k-m"),
     "qwen38-27b-ud-q4-k-xl": ("unsloth-qwen3-8-27b-gguf--ud-q4-k-xl", "unsloth-qwen3-8-27b-gguf--ud-q4-k-xl"),
     "qwen38-q6": ("orcarouter-qwen3-8-27b-uncensored-gguf--q6-k", "orcarouter-qwen3-8-27b-uncensored-gguf--q6-k"),
@@ -54,8 +54,8 @@ INSTANCES = {
         "unsloth-qwen3-6-35b-a3b-mtp-gguf--ud-iq4-xs",
     ),
     "gemma4-26b-a4b-q4-k-s": (
-        "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
-        "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s",
+        "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
+        "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
     ),
     "gemma4-26b-a4b-q4-k-xl": (
         "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-xl",
@@ -69,13 +69,10 @@ INSTANCES = {
 }
 
 CLONE_INSTANCES = [
-    ("unsloth-qwen3-6-27b-gguf--q4-k-m", "unsloth-qwen3-6-27b-gguf--q6-k", "Q6_K"),
-    ("unsloth-qwen3-6-27b-gguf--q4-k-m", "unsloth-qwen3-6-27b-gguf--iq4-xs", "IQ4_XS"),
     ("unsloth-qwen3-6-27b-mtp-gguf--q4-k-m", "unsloth-qwen3-6-27b-mtp-gguf--q4-k-s", "Q4_K_S"),
     ("orcarouter-qwen3-8-27b-uncensored-gguf--iq2-xxs", "orcarouter-qwen3-8-27b-uncensored-gguf--q6-k", "Q6_K"),
     ("orcarouter-qwen3-8-27b-uncensored-gguf--iq2-xxs", "orcarouter-qwen3-8-27b-uncensored-gguf--q8-0", "Q8_0"),
     ("ornith-ai-ornith-1-5-35b-a3b-gguf--q4-k-m", "ornith-ai-ornith-1-5-35b-a3b-gguf--q5-k-m", "Q5_K_M"),
-    ("unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-xl", "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-s", "UD-Q4_K_S"),
 ]
 
 
