@@ -27,7 +27,7 @@
       },
       {
         "read_only": true,
-        "source": "asset/lemonade-server-rocm-b1323.cfg",
+        "source": "asset/lemonade-server-rocm-b1323-tp2.cfg",
         "target": "/opt/lemonade/.config/lemonade/config.json"
       }
     ],

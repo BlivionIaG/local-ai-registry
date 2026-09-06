@@ -133,7 +133,10 @@ def unpublished(label: str) -> dict:
     }
 
 
-def lemonade_draft() -> dict:
+def lemonade_draft(tp: int = 1) -> dict:
+    config_asset = (
+        "asset/lemonade-server-rocm-b1323.cfg" if tp == 1 else "asset/lemonade-server-rocm-b1323-tp2.cfg"
+    )
     return {
         "accelerator_backend": "amd-rocm",
         "arguments": ["--host", "0.0.0.0"],
@@ -148,7 +151,7 @@ def lemonade_draft() -> dict:
             {"read_only": False, "source": "~/.cache/huggingface", "target": "/opt/lemonade/.cache/huggingface"},
             {
                 "read_only": True,
-                "source": "asset/lemonade-server-rocm-b1323.cfg",
+                "source": config_asset,
                 "target": "/opt/lemonade/.config/lemonade/config.json",
             },
         ],
@@ -384,7 +387,7 @@ def recipe_and_sweep(sweep_path: Path) -> None:
         "status": "candidate",
     }
     if series == "lemonade":
-        recipe["draft_launch"] = lemonade_draft()
+        recipe["draft_launch"] = lemonade_draft(tp)
     recipe["facts"] = facts_for(recipe)
     if series == "lemonade":
         recipe["facts"]["draft_launch.entrypoint"] = {
