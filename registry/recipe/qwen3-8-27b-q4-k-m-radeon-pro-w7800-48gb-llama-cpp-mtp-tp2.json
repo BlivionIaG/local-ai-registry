@@ -5,11 +5,11 @@
     "tools": null,
     "vision": null
   },
-  "description": "Observed llama.cpp HIP run. Evidence for compatibility, not an executable launch contract.",
+  "description": "Qwen3.8-27B UD-Q4_K_M on two Radeon PRO W7800 48GB via Lemonade Server v11.9.0, llama.cpp ROCm nightly b1323, tensor-split 0.5,0.5, spec-type draft-mtp n-max 3, 8192 context.",
   "engine": {
     "graph_mode": null,
     "name": "llama.cpp",
-    "version": "c060ca9"
+    "version": "b1323-95ef7fc"
   },
   "facts": {
     "capabilities.chat": {
@@ -101,26 +101,57 @@
   "hardware_id": "radeon-pro-w7800-48gb",
   "id": "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
   "launch": {
+    "accelerator_backend": "amd-rocm",
+    "arguments": [
+      "--host",
+      "0.0.0.0"
+    ],
+    "asset_ids": [
+      "lemonade-server-rocm-b1323-tp2-mtp-config"
+    ],
     "container": {
-      "captured_at": "2026-09-06T18:35:46Z",
+      "captured_at": "2026-09-06T22:23:35Z",
       "compose_file": null,
-      "digest": null,
-      "image": null,
-      "reason": "reference-only-launch",
-      "runtime": null,
+      "digest": "sha256:7c780707cd695392a8680f557c7c1d55521383a71b1c4c5a9d9e6a226a1bee91",
+      "image": "ghcr.io/lemonade-sdk/lemonade-server:v11.9.0@sha256:7c780707cd695392a8680f557c7c1d55521383a71b1c4c5a9d9e6a226a1bee91",
+      "reason": "image-reference-in-launch",
+      "runtime": "docker",
       "source": [
         {
-          "captured_at": "2026-09-06T18:35:46Z",
-          "kind": "recipe-launch",
+          "captured_at": "2026-09-06T22:23:35Z",
+          "kind": "acceptance-run",
           "url": "https://github.com/0xSero/local-ai-registry"
         }
       ],
-      "state": "none"
+      "state": "digest-pinned"
     },
-    "kind": "reference",
-    "source": "0xsero"
+    "container_port": 13305,
+    "entrypoint": "/opt/lemonade/lemond",
+    "environment": {},
+    "host_port": 13305,
+    "image": "ghcr.io/lemonade-sdk/lemonade-server:v11.9.0@sha256:7c780707cd695392a8680f557c7c1d55521383a71b1c4c5a9d9e6a226a1bee91",
+    "ipc": "host",
+    "kind": "docker",
+    "mounts": [
+      {
+        "read_only": false,
+        "source": "~/.cache/huggingface",
+        "target": "/opt/lemonade/.cache/huggingface"
+      },
+      {
+        "read_only": true,
+        "source": "asset/lemonade-server-rocm-b1323-tp2-mtp.cfg",
+        "target": "/opt/lemonade/.config/lemonade/config.json"
+      }
+    ],
+    "shm_size": "16g"
   },
   "metadata": {
+    "acceptance": {
+      "accepted_at": "2026-09-06T22:23:35Z",
+      "harness": "local-ai validate",
+      "served_model_id": "Qwen3.8-27B-UD-Q4_K_M"
+    },
     "lab": {
       "backend": "rocm",
       "hardware_label": "Radeon PRO W7800 48GB",
@@ -165,11 +196,12 @@
   "serving": {
     "kv_cache_tokens": null,
     "max_concurrency": 1,
-    "max_context_tokens": 638,
+    "max_context_tokens": 8192,
     "tensor_parallel": 2
   },
   "speed_sweep_ids": [
-    "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2-sweep"
+    "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2-sweep",
+    "qwen3-8-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2-acceptance"
   ],
-  "status": "candidate"
+  "status": "validated"
 }
