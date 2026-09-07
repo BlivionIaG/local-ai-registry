@@ -5225,7 +5225,9 @@
       "gemma-4-26b-a4b-it-q4-k-m-ryzen-ai-max-plus-395-128gb-llama-cpp-tp1-sweep",
       "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp1-sweep",
       "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2-sweep",
+      "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-acceptance",
       "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-sweep",
+      "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2-acceptance",
       "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2-sweep",
       "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1-acceptance",
       "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1-sweep",
@@ -5237,7 +5239,9 @@
       "gemma-4-26b-a4b-it-q4-k-xl-radeon-ai-pro-r9700-32gb-llama-cpp-tp1-sweep",
       "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp1-sweep",
       "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2-sweep",
+      "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-acceptance",
       "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-sweep",
+      "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2-acceptance",
       "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2-sweep",
       "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1-acceptance",
       "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1-sweep",
@@ -5762,7 +5766,9 @@
       "ornith-1-5-35b-a3b-nvfp4-nvfp4-rtx-5090-32gb-vllm-tp1-sweep",
       "ornith-1-5-35b-a3b-q5-k-m-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp1-sweep",
       "ornith-1-5-35b-a3b-q5-k-m-radeon-pro-w7800-48gb-llama-cpp-kernel-anvil-tp2-sweep",
+      "ornith-1-5-35b-a3b-q5-k-m-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-acceptance",
       "ornith-1-5-35b-a3b-q5-k-m-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp1-sweep",
+      "ornith-1-5-35b-a3b-q5-k-m-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2-acceptance",
       "ornith-1-5-35b-a3b-q5-k-m-radeon-pro-w7800-48gb-llama-cpp-lemonade-tp2-sweep",
       "ornith-1-5-35b-a3b-q5-k-m-radeon-pro-w7800-48gb-llama-cpp-tp1-sweep",
       "ornith-1-5-35b-a3b-q5-k-m-radeon-pro-w7800-48gb-llama-cpp-tp2-sweep",
@@ -8198,7 +8204,7 @@
     "model_instance": 1159,
     "price": 218,
     "recipe": 2589,
-    "speed_sweep": 3151
+    "speed_sweep": 3157
   },
   "resolver_rule": "Resolve <field>_id from <field>/<id>.json and <field>_ids as an array of those records; underscores in field names become hyphens in collection directories. Resolve price ids from price/<product-id>/<region>.json. Reverse lookups live beside this file: recipes.json (compact filter rows), recipes-by-hardware.json, instances-by-model.json, benchmarks-by-model.json, prices-by-hardware.json, hardware-speed-evidence.json, recommendations.json (one validated recipe per hardware id).",
   "schema_version": "local-ai-registry/v1"
