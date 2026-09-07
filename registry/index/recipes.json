@@ -3276,10 +3276,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -3293,10 +3293,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--q4-k-s",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -3446,10 +3446,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-xl",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -3463,10 +3463,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "gemma-4-26b-a4b-it-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-gemma-4-26b-a4b-it-gguf--ud-q4-k-xl",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -30680,10 +30680,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -30697,10 +30697,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--iq4-xs",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -32040,10 +32040,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q4-k-m",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -32057,10 +32057,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q4-k-m",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -32618,10 +32618,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q4-k-s",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -32635,10 +32635,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-q4-k-s-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q4-k-s",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -32856,10 +32856,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--ud-q4-k-xl",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -32873,10 +32873,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--ud-q4-k-xl",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -33230,10 +33230,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-q6-k-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q6-k",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -33247,10 +33247,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-27b-q6-k-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-27b-mtp-gguf--q6-k",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -34845,10 +34845,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-35b-a3b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-35b-a3b-mtp-gguf--ud-iq4-xs",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -34862,10 +34862,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-35b-a3b-iq4-xs-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-35b-a3b-mtp-gguf--ud-iq4-xs",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -35678,10 +35678,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-35b-a3b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-35b-a3b-mtp-gguf--q4-k-m",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -35695,10 +35695,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-6-35b-a3b-q4-k-m-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-6-35b-a3b-mtp-gguf--q4-k-m",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -39384,10 +39384,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-8-27b-ud-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-8-27b-gguf--ud-q4-k-xl",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -39401,10 +39401,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-8-27b-ud-q4-k-xl-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "unsloth-qwen3-8-27b-gguf--ud-q4-k-xl",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -39792,10 +39792,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-8-27b-uncensored-q6-k-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "orcarouter-qwen3-8-27b-uncensored-gguf--q6-k",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -39809,10 +39809,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-8-27b-uncensored-q6-k-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "orcarouter-qwen3-8-27b-uncensored-gguf--q6-k",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -39928,10 +39928,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-8-27b-uncensored-q8-0-radeon-pro-w7800-48gb-llama-cpp-mtp-tp1",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "orcarouter-qwen3-8-27b-uncensored-gguf--q8-0",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
@@ -39945,10 +39945,10 @@
       "hardware_id": "radeon-pro-w7800-48gb",
       "has_evidence": true,
       "id": "qwen3-8-27b-uncensored-q8-0-radeon-pro-w7800-48gb-llama-cpp-mtp-tp2",
-      "launch_kind": "reference",
+      "launch_kind": "docker",
       "model_instance_id": "orcarouter-qwen3-8-27b-uncensored-gguf--q8-0",
       "recipe_source": "0xsero",
-      "status": "candidate"
+      "status": "validated"
     },
     {
       "capabilities": {
