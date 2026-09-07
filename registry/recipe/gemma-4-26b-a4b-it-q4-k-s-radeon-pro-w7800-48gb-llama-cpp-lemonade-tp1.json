@@ -156,7 +156,7 @@
       "backend": "rocm",
       "hardware_label": "Radeon PRO W7800 48GB",
       "host": "par1-cs13",
-      "notes": "Bundled HIP 7.16 isolated from host ROCm 7.2. Same llama-bench flags as stock.",
+      "notes": "Lemonade Server v11.9.0 docker. llama.cpp ROCm nightly b1323, bundled HIP 7.16 isolated from host ROCm 7.2. mmap, 8192 context.",
       "observed_command": "llama-bench -p 512 -n 128 -r 5 -ngl 99 -fa on -b 2048 -ub 512 -sm none",
       "raw_path": "raw/lemonade-b1323/gemma4-26b-a4b-q4-k-s-lemonade-single.json",
       "series": "lemonade",

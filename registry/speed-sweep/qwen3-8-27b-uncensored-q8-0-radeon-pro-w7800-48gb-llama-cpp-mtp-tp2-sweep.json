@@ -32,7 +32,7 @@
   "source": {
     "commit": null,
     "kind": "lab-measurement",
-    "notes": "Not llama-bench. llama-server --spec-type draft-mtp --spec-draft-n-max 3. /completion cache_prompt=false, ~510-token prompt, n_predict=128, 5 reps after warmup. Qwen3.6 uses unsloth *-MTP-GGUF (not the trunk GGUF). Sidecar draft unsloth/Qwen3.8-27B-GGUF/MTP/mtp-Qwen3.8-27B-Q4_0.gguf.",
+    "notes": "Not llama-bench. llama-server --spec-type draft-mtp --spec-draft-n-max 3. /completion cache_prompt=false, ~510-token prompt, n_predict=128, 5 reps after warmup. Sidecar draft unsloth/Qwen3.8-27B-GGUF/MTP/mtp-Qwen3.8-27B-Q4_0.gguf.",
     "paths": [
       "raw/mtp-llama-server/qwen38-q8-mtp-dual-tensor.json"
     ],
