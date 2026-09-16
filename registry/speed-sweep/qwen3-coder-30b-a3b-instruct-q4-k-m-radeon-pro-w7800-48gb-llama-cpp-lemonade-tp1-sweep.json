@@ -56,7 +56,7 @@
   "source": {
     "commit": null,
     "kind": "lab-measurement",
-    "notes": "Bundled HIP 7.16 isolated from host ROCm 7.2. Same llama-bench flags as stock. Fastest 1× long-ctx: p8192 and p32768.",
+    "notes": "Fastest 1× long-ctx: p8192 and p32768.",
     "paths": [
       "raw/lemonade-b1323/qwen3-coder-30b-a3b-q4-k-m-lemonade-single.json",
       "raw/longctx-fast/qwen3-coder-30b-a3b-q4-k-m-fast-longctx.json"

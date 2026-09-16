@@ -32,7 +32,7 @@
   "source": {
     "commit": null,
     "kind": "lab-measurement",
-    "notes": "SMITHY_CONFIG from autoforge. -b 8192 -ub 64 -ctk/-ctv q8_0 --poll 0. Server recipe; loses llama-bench prefill.",
+    "notes": null,
     "paths": [
       "raw/tuned-kernel-anvil/qwen36-27b-q6-k-tuned-single.json"
     ],

@@ -2,8 +2,8 @@
 """Import par1-cs13 2× W7800 48GB lab evidence as candidate recipes.
 
 Reads LocalMaxxing/registry-data/w7800-local-ai-registry/. Writes hardware,
-missing model-instances, recipes, and speed-sweeps. launch.kind is reference;
-status stays candidate. Lemonade docker contracts are added only by
+recipes, and speed-sweeps against existing model-instances. launch.kind is
+reference; status stays candidate. Lemonade docker contracts are added only by
 accept_recipe.py after a live /v1 run, not by this importer. Then:
 
     python3 scripts/format_registry.py
@@ -14,6 +14,7 @@ accept_recipe.py after a live /v1 run, not by this importer. Then:
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -69,12 +70,9 @@ INSTANCES = {
     "ornith-q5": ("ornith-ai-ornith-1-5-35b-a3b-gguf--q5-k-m", "ornith-ai-ornith-1-5-35b-a3b-gguf--q5-k-m"),
 }
 
-CLONE_INSTANCES = [
-    ("unsloth-qwen3-6-27b-mtp-gguf--q4-k-m", "unsloth-qwen3-6-27b-mtp-gguf--q4-k-s", "Q4_K_S"),
-    ("orcarouter-qwen3-8-27b-uncensored-gguf--iq2-xxs", "orcarouter-qwen3-8-27b-uncensored-gguf--q6-k", "Q6_K"),
-    ("orcarouter-qwen3-8-27b-uncensored-gguf--iq2-xxs", "orcarouter-qwen3-8-27b-uncensored-gguf--q8-0", "Q8_0"),
-    ("ornith-ai-ornith-1-5-35b-a3b-gguf--q4-k-m", "ornith-ai-ornith-1-5-35b-a3b-gguf--q5-k-m", "Q5_K_M"),
-]
+SIDECAR_RE = re.compile(r"Sidecar draft \S+\.gguf")
+WEIGHTS_RE = re.compile(r"Weights \S+\.gguf")
+LONGCTX = "Fastest 1× long-ctx: p8192 and p32768."
 
 
 def dump(path: Path, obj: dict) -> None:
@@ -208,19 +206,17 @@ def write_hardware() -> None:
     )
 
 
-def clone_instance(src_id: str, new_id: str, precision: str) -> None:
-    dest = REG / "model-instance" / f"{new_id}.json"
-    if dest.exists():
-        return
-    src = json.loads((REG / "model-instance" / f"{src_id}.json").read_text())
-    src["id"] = new_id
-    src["weights"]["format"] = precision
-    src["weights"]["precision"] = precision
-    src["weights"]["size_gb"] = None
-    facts = src.get("facts") or {}
-    facts.pop("weights.size_gb", None)
-    src["facts"] = facts
-    dump(dest, src)
+def lab_notes(raw: str | None) -> str | None:
+    if not raw:
+        return None
+    keep = []
+    if m := SIDECAR_RE.search(raw):
+        keep.append(m.group(0) + ".")
+    if m := WEIGHTS_RE.search(raw):
+        keep.append(m.group(0) + ".")
+    if LONGCTX in raw or "Fastest 1x long-ctx: p8192 and p32768." in raw:
+        keep.append(LONGCTX)
+    return " ".join(keep) or None
 
 
 def recipe_and_sweep(sweep_path: Path) -> None:
@@ -258,7 +254,7 @@ def recipe_and_sweep(sweep_path: Path) -> None:
     }
     version, decode_mode = engines[series]
     tp = sweep.get("hardware_count") or 1
-    notes = (sweep.get("source") or {}).get("notes") or ""
+    notes = lab_notes((sweep.get("source") or {}).get("notes"))
     rows_in = sweep.get("rows") or []
     command = observed_command(series, tp)
     tokenized = tokenized_record(parse_observed_command(command))
@@ -300,7 +296,7 @@ def recipe_and_sweep(sweep_path: Path) -> None:
 
     recipe = {
         "capabilities": {"chat": None, "reasoning": None, "tools": None, "vision": None},
-        "description": "Observed llama.cpp HIP run. Evidence for compatibility, not an executable launch contract.",
+        "description": None,
         "engine": {"graph_mode": None, "name": "llama.cpp", "version": version},
         "facts": {},
         "hardware_count": tp,
@@ -376,12 +372,10 @@ def main() -> int:
     if not PKG.is_dir():
         raise SystemExit(f"missing package {PKG}")
     write_hardware()
-    for src, dest, prec in CLONE_INSTANCES:
-        clone_instance(src, dest, prec)
     sweeps = sorted((PKG / "speed-sweeps").glob("*.json"))
     for path in sweeps:
         recipe_and_sweep(path)
-    print(f"wrote hardware {HW}, {len(CLONE_INSTANCES)} instances (if missing), {len(sweeps)} recipes+sweeps")
+    print(f"wrote hardware {HW}, {len(sweeps)} recipes+sweeps")
     return 0
 
 

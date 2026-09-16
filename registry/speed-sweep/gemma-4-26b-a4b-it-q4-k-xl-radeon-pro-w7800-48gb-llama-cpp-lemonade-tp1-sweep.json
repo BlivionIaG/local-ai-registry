@@ -32,7 +32,7 @@
   "source": {
     "commit": null,
     "kind": "lab-measurement",
-    "notes": "Bundled HIP 7.16 isolated from host ROCm 7.2. Same llama-bench flags as stock.",
+    "notes": null,
     "paths": [
       "raw/lemonade-b1323/gemma4-26b-a4b-q4-k-xl-lemonade-single.json"
     ],

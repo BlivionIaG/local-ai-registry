@@ -56,7 +56,7 @@
   "source": {
     "commit": null,
     "kind": "lab-measurement",
-    "notes": "Bundled HIP 7.16 isolated from host ROCm 7.2. Same llama-bench flags as stock.",
+    "notes": null,
     "paths": [
       "raw/lemonade-b1323/ornith-q5-lemonade-single.json",
       "raw/longctx-fast/ornith-q5-fast-longctx.json"

@@ -156,7 +156,7 @@
       "backend": "rocm",
       "hardware_label": "Radeon PRO W7800 48GB",
       "host": "par1-cs13",
-      "notes": "Not llama-bench. llama-server --spec-type draft-mtp --spec-draft-n-max 3. /completion cache_prompt=false, ~510-token prompt, n_predict=128, 5 reps after warmup. Qwen3.6 uses unsloth *-MTP-GGUF (not the trunk GGUF). Weights unsloth/Qwen3.6-27B-MTP-GGUF/Qwen3.6-27B-Q6_K.gguf. Fastest 1× long-ctx: p8192 and p32768.",
+      "notes": "Weights unsloth/Qwen3.6-27B-MTP-GGUF/Qwen3.6-27B-Q6_K.gguf. Fastest 1× long-ctx: p8192 and p32768.",
       "observed_command": "llama-server --spec-type draft-mtp --spec-draft-n-max 3 -ngl 99 --flash-attn on -sm none",
       "raw_path": "raw/mtp-llama-server/qwen36-27b-q6-k-mtp-single.json",
       "series": "mtp",

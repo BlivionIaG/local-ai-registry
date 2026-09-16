@@ -60,7 +60,7 @@
   "source": {
     "commit": null,
     "kind": "lab-measurement",
-    "notes": "Not llama-bench. llama-server --spec-type draft-mtp --spec-draft-n-max 3. /completion cache_prompt=false, ~510-token prompt, n_predict=128, 5 reps after warmup. Qwen3.6 uses unsloth *-MTP-GGUF (not the trunk GGUF). Weights unsloth/Qwen3.6-27B-MTP-GGUF/Qwen3.6-27B-Q4_K_M.gguf. Fastest 1× long-ctx: p8192 and p32768.",
+    "notes": "Weights unsloth/Qwen3.6-27B-MTP-GGUF/Qwen3.6-27B-Q4_K_M.gguf. Fastest 1× long-ctx: p8192 and p32768.",
     "paths": [
       "raw/mtp-llama-server/qwen36-27b-q4-k-m-mtp-single.json",
       "raw/longctx-fast/qwen36-27b-q4-k-m-fast-p32768.json",

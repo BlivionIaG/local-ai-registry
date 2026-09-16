@@ -32,7 +32,7 @@
   "source": {
     "commit": null,
     "kind": "lab-measurement",
-    "notes": "HIP graphs on, smithy patch in binary unused. -ngl 99 -fa on -b 2048 -ub 512 f16 KV.",
+    "notes": null,
     "paths": [
       "raw/stock-hip-c060ca9/gemma4-26b-a4b-q4-k-xl-single.json"
     ],
